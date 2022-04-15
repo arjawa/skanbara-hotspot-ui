@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  <head>
+    <title>SKANBARA | Login</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="pragma" content="no-cache" />
+    <meta http-equiv="expires" content="-1" />
+    <meta
+      name="viewport"
+      content="width=device-width; initial-scale=1.0; maximum-scale=1.0;"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+
+  <body>
+    $(if chap-id)
+    <form name="sendin" action="$(link-login-only)" method="post">
+      <input type="hidden" name="username" />
+      <input type="hidden" name="password" />
+      <input type="hidden" name="dst" value="$(link-orig)" />
+      <input type="hidden" name="popup" value="true" />
+    </form>
+
+    <script type="text/javascript" src="/md5.js"></script>
+    <script type="text/javascript">
+      <!--
+      function doLogin() {
+        document.sendin.username.value = document.login.username.value;
+        document.sendin.password.value = hexMD5(
+          "$(chap-id)" + document.login.password.value + "$(chap-challenge)"
+        );
+        document.sendin.submit();
+        return false;
+      }
+      //-->
+    </script>
+    $(endif)
+
+    <div class="container flex-center">
+      <form
+        name="login"
+        action="$(link-login-only)"
+        method="post"
+        class="form flex-center"
+        $(if chap-id)
+        onSubmit="return doLogin()"
+        $(endif)
+      >
+        <div class="logo">
+          <img src="img/skanbara.png" alt="skanbara" />
+          <h1>SKANBARA</h1>
+          <p>Hotspot Login</p>
+        </div>
+        <div class="form-group">
+          <input type="hidden" name="dst" value="https://www.google.com" />
+          <input type="hidden" name="popup" value="true" />
+
+          <label for="username" class="person">
+            <input name="username" type="text" placeholder="Username" />
+          </label>
+          <label for="password" class="lock">
+            <input name="password" type="password" placeholder="Password" />
+          </label>
+          <input type="submit" value="LOGIN" />
+        </div>
+      </form>
+
+      <br />
+      <div class="footer">
+        <span>&copy;2022</span> | <span>SMK Negeri Balimandara</span>
+      </div>
+      $(if error)<br />
+      <div style="color: #ff8080; font-size: 9px">$(error)</div>
+      $(endif)
+    </div>
+
+    <script type="text/javascript">
+      <!--
+      document.login.username.focus();
+      //-->
+    </script>
+  </body>
+</html>

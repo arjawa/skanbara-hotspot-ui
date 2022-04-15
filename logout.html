@@ -1,0 +1,55 @@
+<html>
+<head>
+<title>SKANBARA | Logout</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="expires" content="-1">
+<meta
+	name="viewport"
+	content="width=device-width; initial-scale=1.0; maximum-scale=1.0;"
+/>
+<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+<script language="JavaScript">
+<!--
+    function openLogin() {
+	if (window.name != 'hotspot_logout') return true;
+	open('$(link-login)', '_blank', '');
+	window.close();
+	return false;
+    }
+//-->
+</script>
+
+<div class="container flex-center">
+	<form action="$(link-login)" name="login" class="form" onSubmit="return openLogin()">
+	<div class="logo">
+		<img src="img/skanbara.png" alt="skanbara" />
+		<p>you have just logged out</p>
+	</div>
+	
+	<table border="0">  
+	<tr><td>user name</td><td>:$(username)</td></tr>
+	<tr><td>IP address</td><td>:$(ip)</td></tr>
+	<tr><td>MAC address</td><td>:$(mac)</td></tr>
+	<tr><td>session time</td><td>:$(uptime)</td></tr>
+	$(if session-time-left)
+	<tr><td>time left</td><td>:$(session-time-left)</td></tr>
+	$(endif)
+	<tr><td>bytes up/down</td><td>:$(bytes-in-nice) / $(bytes-out-nice)</td></tr>
+	</table>
+	<br>
+	<input type="submit" value="LOGIN">
+	</form>
+	<br />
+      <div class="footer">
+        <span>&copy;2022</span> | <span>SMK Negeri Balimandara</span>
+      </div>
+      $(if error)<br />
+      <div style="color: #ff8080; font-size: 9px">$(error)</div>
+      $(endif)
+</div>
+</body>
+</html>
