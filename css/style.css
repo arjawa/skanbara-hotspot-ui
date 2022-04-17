@@ -4,6 +4,7 @@
   --darker-red: #630e0f;
   --krem: #d5bb91;
   --rounded-corner: 16px;
+  --text-color: #110505;
 }
 
 * {
@@ -19,7 +20,8 @@
 }
 
 ::placeholder {
-    color: #bbbbbb;
+    color: var(--text-color);
+    opacity: .7;
 }
 
 html, body {
@@ -27,10 +29,22 @@ html, body {
 }
 
 body {
-  color: #737373;
+  color: var(--text-color);
   font-size: 10px;
   font-family: verdana;
   background: linear-gradient(to top, var(--krem), var(--primary));
+}
+
+video {  
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  filter: grayscale(40%);
+  filter: brightness(40%);
 }
 
 textarea,
@@ -61,14 +75,21 @@ select {
   width: 200px;
   height: 320px;
   padding: 36px;
-  background-color: #fdfbfb;
+  /* background-color: #fdfbfb; */
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  box-shadow: 2px 2px 5px var(--krem));
+  /* box-shadow: 2px 2px 5px var(--krem)); */
   animation: fadeInAnimation ease 3s;
   animation-iteration-count: 1;
   animation-fill-mode: forwards;
+
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid #110505;
 }
 
 .form input[type="text"],
@@ -79,6 +100,9 @@ select {
   border-radius: var(--rounded-corner);
   margin: 4px 0;
   font-family: Poppins, Arial, Helvetica, sans-serif;
+  background-color: #bbbbbb;
+  opacity: .7;
+  color: var(--text-color);
 }
 
 .form input[type="text"]:focus,
@@ -89,6 +113,8 @@ select {
   border-bottom: 1px solid var(--darker-red);
   transition: all;
   transition-duration: 0.5s;
+  background: transparent;
+  opacity: 1;
 }
 
 .form input[type="submit"] {
@@ -103,6 +129,7 @@ select {
   transition: all;
   transition-duration: 0.5s;
   cursor: pointer;
+  border-color: var(--darker-red);
 }
 
 .form input[type="submit"]:hover {
@@ -111,6 +138,7 @@ select {
 
 .logo {
   text-align: center;
+  font-family: Poppins, Arial, Helvetica, sans-serif;
 }
 
 .logo img {
@@ -119,8 +147,18 @@ select {
 }
 
 .logo h1 {
-    font-weight: 500;
-    color: #737373;
+    font-weight: 600;
+    font-size: 16px;
+    color: var(--text-color);
+    text-decoration: underline;
+    text-decoration-color: var(--darker-red);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 4px;
+}
+
+.logo p {
+  font-size: 14px;
+  font-weight: 600;
 }
 
 label {
@@ -153,7 +191,7 @@ label.lock::before {
 
 .footer {
     color: #808080; 
-    font-size: 9px;
+    font-size: 12px;
 }
 
 @keyframes fadeInAnimation {
